@@ -1,11 +1,10 @@
 import subprocess
-
+import sys
 
 def run_bandit(target):
-
-    print("[+] Running Bandit scan")
-
     subprocess.run([
+        sys.executable,
+        "-m",
         "bandit",
         "-r",
         target

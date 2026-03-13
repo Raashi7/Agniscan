@@ -6,10 +6,14 @@ setup(
     description="AgniScan - Automated SAST and DAST Security Scanner",
     author="Rashi Karnewar",
     packages=find_packages(),
+    python_requires=">=3.9",
     install_requires=[
         "requests",
         "rich",
-        "colorama"
+        "colorama",
+        "bandit",
+        "semgrep",
+        "python-owasp-zap-v2.4"
     ],
     entry_points={
         "console_scripts": [
