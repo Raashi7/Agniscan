@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: agniscan
+Version: 1.0
+Summary: AgniScan - Automated SAST and DAST Security Scanner
+Author: Rashi Karnewar
+Requires-Dist: requests
+Requires-Dist: rich
+Requires-Dist: colorama
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: summary

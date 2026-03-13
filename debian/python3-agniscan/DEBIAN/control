@@ -1,0 +1,15 @@
+Package: python3-agniscan
+Source: agniscan
+Version: 1.0-1
+Architecture: all
+Maintainer: Rashi Karnewar rashikarnewar31@gmail.com
+Installed-Size: 44
+Depends: python3-colorama, python3-requests, python3-rich, python3:any
+Suggests: python-agniscan-doc
+Section: security
+Priority: optional
+Homepage: <insert the upstream URL, if relevant>
+Description: <insert up to 60 chars description> (Python 3)
+ <Insert long description, indented with spaces.>
+ .
+ This package installs the library for Python 3.

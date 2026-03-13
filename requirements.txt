@@ -1,0 +1,8 @@
+requests
+colorama
+tqdm
+rich
+python-nmap
+python-owasp-zap-v2.4
+semgrep
+bandit

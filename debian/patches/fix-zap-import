@@ -1,0 +1,84 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ agniscan (1.0-1) UNRELEASED; urgency=medium
+ .
+   * Initial release. (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+Author: root <root@unknown>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout https://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: (upstream|backport|vendor|other), (<patch-url>|commit:<commit-id>)
+Bug: <upstream-bugtracker-url>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: (no|not-needed|<patch-forwarded-url>)
+Applied-Upstream: <version>, (<commit-url>|commit:<commid-id>)
+Reviewed-By: <name and email of someone who approved/reviewed the patch>
+Last-Update: 2026-03-12
+
+--- agniscan-1.0.orig/agniscan/cli/dast.py
++++ agniscan-1.0/agniscan/cli/dast.py
+@@ -2,13 +2,23 @@ from agniscan.scanners.amass_scan import
+ from agniscan.scanners.nmap_scan import run_nmap
+ from agniscan.scanners.nikto_scan import run_nikto
+ from agniscan.scanners.nuclei_scan import run_nuclei
+-from agniscan.scanners.zap_scan import run_zap
++
+ 
+ 
+ def run_dast(target):
+ 
+     print("[AgniScan] Starting DAST scan")
+ 
++    try:
++        from agniscan.scanners.zap_scan import run_zap
++    except ImportError:
++        print("[!] ZAP module not available")
++        return
++
++    run_zap(target)
++
++    print("[AgniScan] Starting DAST scan")
++
+     run_amass(target)
+ 
+     run_nmap(target)
+--- agniscan-1.0.orig/agniscan/scanners/zap_scan.py
++++ agniscan-1.0/agniscan/scanners/zap_scan.py
+@@ -1,7 +1,12 @@
+ import time
+ import subprocess
+ import requests
+-from zapv2 import ZAPv2
++try:
++    from zapv2 import ZAPv2
++except ImportError:
++    print("[!] ZAP Python API not installed.")
++    print("[!] Install it using: sudo apt install python3-zapv2")
++    ZAPv2 = None
+ 
+ ZAP_HOST = "127.0.0.1"
+ ZAP_PORT = "8090"
+@@ -48,6 +53,14 @@ def start_zap():
+ 
+ def run_zap(target):
+ 
++    if ZAPv2 is None:
++        print("[!] ZAP dependency missing. Skipping ZAP scan.")
++        return
++
++    print("[+] Running ZAP scan on:", target)
++
++    zap = ZAPv2()
++
+     if not target.startswith("http"):
+         target = "http://" + target
+ 

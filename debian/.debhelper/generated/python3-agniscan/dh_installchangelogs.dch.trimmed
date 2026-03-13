@@ -1,0 +1,5 @@
+agniscan (1.0-1) UNRELEASED; urgency=medium
+
+  * Initial release. (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <root@unknown>  Thu, 12 Mar 2026 02:27:32 -0400
