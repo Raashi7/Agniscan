@@ -3,9 +3,16 @@ Name: agniscan
 Version: 1.0
 Summary: AgniScan - Automated SAST and DAST Security Scanner
 Author: Rashi Karnewar
+Requires-Python: >=3.9
+License-File: LICENSE
 Requires-Dist: requests
 Requires-Dist: rich
 Requires-Dist: colorama
+Requires-Dist: bandit
+Requires-Dist: semgrep
+Requires-Dist: python-owasp-zap-v2.4
 Dynamic: author
+Dynamic: license-file
 Dynamic: requires-dist
+Dynamic: requires-python
 Dynamic: summary

@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 agniscan/__init__.py
@@ -20,7 +21,6 @@ agniscan/scanners/amass_scan.py
 agniscan/scanners/bandit_scan.py
 agniscan/scanners/nikto_scan.py
 agniscan/scanners/nmap_scan.py
-agniscan/scanners/nuclei_scan.py
 agniscan/scanners/semgrep_scan.py
 agniscan/scanners/sqlmap_scan.py
 agniscan/scanners/zap_scan.py

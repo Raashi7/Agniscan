@@ -1,7 +1,6 @@
 from agniscan.scanners.amass_scan import run_amass
 from agniscan.scanners.nmap_scan import run_nmap
 from agniscan.scanners.nikto_scan import run_nikto
-from agniscan.scanners.nuclei_scan import run_nuclei
 from agniscan.scanners.sqlmap_scan import run_sqlmap
 from agniscan.scanners.zap_scan import run_zap
 
@@ -21,13 +20,10 @@ def run_dast(target):
         print("[3/6] Running Nikto (Web Server Scan)")
         run_nikto(target)
 
-        print("[4/6] Running Nuclei (Template Vulnerability Scan)")
-        run_nuclei(target)
-
-        print("[5/6] Running SQLMap (SQL Injection Testing)")
+        print("[4/6] Running SQLMap (SQL Injection Testing)")
         run_sqlmap(target)
 
-        print("[6/6] Running ZAP (Deep DAST Scan)")
+        print("[5/6] Running ZAP (Deep DAST Scan)")
         run_zap(target)
 
         print("\n[AgniScan] DAST scan completed successfully\n")
